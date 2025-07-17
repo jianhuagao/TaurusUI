@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
-import AnimatedVis from '../framerMotions/animatedVis';
 import FloatingBackground from '../framerMotions/floatingBackground';
+import AnimatedShow from '../framerMotions/animatedShow';
 
 export default function HomepageBg() {
   return (
     <div className="pointer-events-none absolute top-0 left-0 -z-10 h-screen w-full bg-[url(/grid.svg)] [mask-image:linear-gradient(180deg,white_1%,rgba(255,255,255,0)_98%)] bg-center dark:bg-[url(/gridDark.svg)]">
-      <AnimatedVis className="h-full">
+      <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="h-full">
         <FloatingBackground
           items={[
             {
@@ -132,7 +132,7 @@ export default function HomepageBg() {
           ]}
         />
         <div></div>
-      </AnimatedVis>
+      </AnimatedShow>
     </div>
   );
 }

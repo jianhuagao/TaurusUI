@@ -9,9 +9,10 @@ import FadeIn from '@/components/framerMotions/fadeIn';
 import LayoutContent from '@/components/layoutContent';
 import { MenuItemProps } from '@/components/menu';
 import { getComponents } from '@/service/dataService';
-import AnimatedVis from '@/components/framerMotions/animatedVis';
 import EmojiHoverCard from '@/components/emojiHoverCard';
 import HomepageBg from '@/components/homepageBg';
+import AnimatedShow from '@/components/framerMotions/animatedShow';
+
 import { geistMomo } from './fonts';
 
 // import { Geist_Mono } from 'next/font/google';
@@ -40,7 +41,7 @@ export default async function Home() {
       <HomepageBg />
       <LayoutContent>
         <div className="mx-auto mt-9 flex max-w-7xl flex-col p-5 sm:p-20">
-          <AnimatedVis className="flex flex-col gap-12">
+          <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="flex flex-col gap-12">
             <h1 className="group z-10 bg-gradient-to-b bg-clip-text text-center text-6xl font-bold transition-all dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
               <ChangeBg className="cursor-pointer leading-20 select-none">
                 <span className="group-hover:ml-0">Component </span>
@@ -60,26 +61,27 @@ export default async function Home() {
                 Github
                 <Image className="dark:invert" src="/icons/github.svg" width={16} height={16} alt="" />
               </Link>
-              <Link href={docUrl} className="text-xl no-underline transition-all hover:underline">
-                <button className="group relative inline-flex cursor-pointer items-center justify-center rounded-xl bg-white/60 px-4 py-2 text-sm text-purple-800 ring-1 ring-gray-300/50 backdrop-blur-md transition-all duration-300 hover:shadow-lg active:scale-90 dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20 dark:hover:ring-white/50">
-                  Get started
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-4 w-0 transition-all group-hover:w-4"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                  </svg>
-                  <span className="pointer-events-none absolute right-2 bottom-2 z-0 size-5 rounded-full bg-purple-400/50 blur-[6px] transition-transform duration-300 ease-in-out group-hover:translate-1/2 dark:bg-purple-400/40"></span>
-                </button>
+              <Link
+                href={docUrl}
+                className="group relative inline-flex cursor-pointer items-center justify-center rounded-xl bg-white/60 px-4 py-2 text-sm text-purple-800 no-underline ring-1 ring-gray-300/50 backdrop-blur-md transition-all duration-300 hover:shadow-lg active:scale-90 dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20 dark:hover:ring-white/50"
+              >
+                Get started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-4 w-0 transition-all group-hover:w-4"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+                <span className="pointer-events-none absolute right-2 bottom-2 z-0 size-5 rounded-full bg-purple-400/50 blur-[6px] transition-transform duration-300 ease-in-out group-hover:translate-1/2 dark:bg-purple-400/40"></span>
               </Link>
             </div>
-          </AnimatedVis>
+          </AnimatedShow>
           <div className="flex flex-col gap-8">
-            <AnimatedVis className="mt-16 mb-6 grid gap-6 md:grid-cols-3">
+            <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="mt-16 mb-6 grid gap-6 md:grid-cols-3">
               <DarkSwitchBlock />
               <EmojiHoverCard
                 emojis={['🧪', '🧬', '🔬', '⚗️', '🧫']}
@@ -93,7 +95,7 @@ export default async function Home() {
                 title="More Components"
                 description="探索更多开箱即用组件"
               />
-            </AnimatedVis>
+            </AnimatedShow>
             <FadeIn once={true}>
               <ComponentPrev
                 componentData={{

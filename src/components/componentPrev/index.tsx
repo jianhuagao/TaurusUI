@@ -95,7 +95,6 @@ const iconSelectClassNames = 'bg-black/10 shadow-inner dark:bg-black/20';
 interface ComponentPrevProps {
   baseUrl: string;
   componentData: ComponentData;
-  originalClassName?: string;
 }
 
 export default memo(function ComponentPrev({ baseUrl, componentData }: ComponentPrevProps) {

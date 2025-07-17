@@ -30,7 +30,7 @@ export default memo(function CollectionList({ componentsData }: { componentsData
         const spanClass = spanArr[span];
         return (
           <ComponentPrev
-            originalClassName={spanClass}
+            data-originalClassName={spanClass}
             key={componentData.id}
             baseUrl={`/components/${lowercaseFirstLetter(componentData.componentsName)}`}
             componentData={componentData}

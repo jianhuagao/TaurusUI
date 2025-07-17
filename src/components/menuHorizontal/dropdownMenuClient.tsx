@@ -6,6 +6,8 @@ import { MenuItemProps } from '../menu';
 import Link from 'next/link';
 import { useDropdownMenu } from './dropdownMenuContext';
 import clsx from 'clsx';
+import AnimatedShow from '../framerMotions/animatedShow';
+import { motion } from 'framer-motion';
 
 interface DropdownMenuClientProps {
   id: string;
@@ -47,25 +49,37 @@ export default function DropdownMenuClient({ id, buttonLabel, items }: DropdownM
       >
         {buttonLabel}
       </button>
+
       {isOpen &&
         createPortal(
-          <div
+          <motion.div
+            layout
+            initial={{ opacity: 0, y: -50, scale: 0.5, origin: 'top' }}
+            animate={{ opacity: 1, y: 0, scale: 1, origin: 'top' }}
+            exit={{ opacity: 0, y: -50, scale: 0.5, origin: 'top' }}
+            transition={{
+              type: 'spring',
+              duration: 0.6,
+              bounce: 0.5
+            }}
             className="fixed z-[9999] w-56 rounded-2xl bg-white/60 p-3 text-sm text-gray-700 shadow-2xl ring-1 ring-gray-400/10 backdrop-blur-2xl dark:bg-black/20 dark:text-white dark:ring-white/10"
             style={{ top: position.top, left: position.left }}
           >
-            {items.map(({ slug, title }) => {
-              const url = `/docs/comp/${slug}`;
-              return (
-                <Link
-                  href={url}
-                  key={title}
-                  className="group relative flex h-10 w-full cursor-pointer items-center gap-3 overflow-hidden rounded-lg p-2 transition-all duration-300 ease-in-out select-none hover:bg-gray-500/15 active:scale-90 dark:ring-white/30 dark:hover:bg-white/20"
-                >
-                  {title}
-                </Link>
-              );
-            })}
-          </div>,
+            <AnimatedShow staggerChildren={0.1}>
+              {items.map(({ slug, title }) => {
+                const url = `/docs/comp/${slug}`;
+                return (
+                  <Link
+                    href={url}
+                    key={title}
+                    className="group relative flex h-10 w-full cursor-pointer items-center gap-3 overflow-hidden rounded-lg p-2 transition-all duration-300 ease-in-out select-none hover:bg-gray-500/15 active:scale-90 dark:ring-white/30 dark:hover:bg-white/20"
+                  >
+                    {title}
+                  </Link>
+                );
+              })}
+            </AnimatedShow>
+          </motion.div>,
           document.body
         )}
     </>

@@ -1,48 +1,70 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { isValidElement, memo, useEffect, useState } from 'react';
+import { isValidElement, memo, useMemo } from 'react';
 
-const animationVariants = {
-  hidden: { opacity: 0, transform: 'scale(0.98)' },
-  visible: {
-    opacity: 1,
-    transform: 'scale(1)',
-    transition: {
-      duration: 1,
-      delayChildren: 0.1,
-      staggerChildren: 0.2
-    }
-  }
+type WithDataOriginalClassName = {
+  'data-originalClassName'?: string;
 };
 
-const ChildVariants = {
-  hidden: { opacity: 0, transform: 'scale(0.98)' },
-  visible: { opacity: 1, transform: 'scale(1)', transition: { duration: 0.2 } }
-};
+interface AnimatedShowProps {
+  children: React.ReactNode[];
+  className?: string;
+  inViewShow?: boolean;
+  scale?: number;
+  duration?: number;
+  childDuration?: number;
+  staggerChildren?: number;
+}
 
-const AnimatedShow = ({ children, className }: { children: React.ReactNode[]; className?: string }) => {
-  const [isClient, setIsClient] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+const AnimatedShow = ({
+  children,
+  className,
+  scale = 0.98,
+  duration = 1,
+  childDuration = 0.4,
+  staggerChildren = 0.2,
+  inViewShow = false
+}: AnimatedShowProps) => {
+  const animationVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, transform: `scale(${scale})` },
+      visible: {
+        opacity: 1,
+        transform: 'scale(1)',
+        transition: {
+          duration,
+          staggerChildren
+        }
+      }
+    }),
+    [scale, duration, staggerChildren]
+  );
 
-  useEffect(() => {
-    setIsClient(true);
-    const timer = setTimeout(() => setIsVisible(true), 100); // 延迟以避免初次显示
-    return () => clearTimeout(timer); // 清理定时器
-  }, []);
-
-  if (!isClient) return null; // 确保在客户端渲染
+  const childVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, transform: `scale(${scale})` },
+      visible: { opacity: 1, transform: 'scale(1)', transition: { duration: childDuration } }
+    }),
+    [scale, childDuration]
+  );
 
   return (
-    <motion.div initial="hidden" animate={isVisible ? 'visible' : 'hidden'} variants={animationVariants} className={className}>
+    <motion.div
+      initial="hidden"
+      animate={inViewShow ? undefined : 'visible'}
+      whileInView={inViewShow ? 'visible' : undefined}
+      variants={animationVariants}
+      className={className}
+    >
       {children.map((child, index) => {
         let originalClassName = '';
         if (isValidElement(child)) {
-          const typedChild = child as React.ReactElement<{ originalClassName?: string }>;
-          originalClassName = typedChild.props.originalClassName || '';
+          const props = child.props as unknown as WithDataOriginalClassName;
+          originalClassName = props['data-originalClassName'] ?? '';
         }
         return (
-          <motion.span key={index} className={originalClassName} variants={ChildVariants}>
+          <motion.span key={index} className={originalClassName} variants={childVariants}>
             {child}
           </motion.span>
         );
