@@ -44,9 +44,9 @@ export default async function MenuHorizontal() {
       </div>
       <div className="mx-3 hidden h-4 w-1 rounded-full bg-[#e0e0e0] xl:block dark:bg-[#e0e0e0]/60"></div>
       <div className="flex items-center gap-2">
-        <DarkSwitch />
         <GithubIcon />
         <LayoutModeSwitch />
+        <DarkSwitch />
       </div>
     </div>
   );

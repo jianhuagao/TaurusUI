@@ -8,7 +8,7 @@ export default memo(function Header() {
     <header className="z-50">
       <div className="mx-auto flex h-24 items-center px-5 sm:px-20">
         <LogoBlock />
-        <div className="mr-2 ml-auto">
+        <div className="mr-3 ml-auto">
           <DarkSwitch />
         </div>
         <GithubIcon />

@@ -113,7 +113,7 @@ export default memo(function ComponentPrev({ baseUrl, componentData }: Component
 
   const [showCode, setShowCode] = useState(false);
   const [previewCode, setPreviewCode] = useState('');
-  const [codeType, setCodeType] = useState<CodeType>('html');
+  const [codeType, setCodeType] = useState<CodeType>('jsx');
 
   const switchShowCode = useCallback(() => {
     setShowCode(prev => !prev);

@@ -1,6 +1,5 @@
 'use client';
 import { memo, useContext } from 'react';
-import Image from 'next/image';
 import ThemeContext from '@/context/themeContext';
 
 export default memo(function DarkSwitch() {
@@ -13,15 +12,34 @@ export default memo(function DarkSwitch() {
   const { theme, toggleTheme } = themeContext;
 
   return (
-    <div onClick={toggleTheme} className="cursor-pointer p-2 transition-all hover:scale-125">
-      <Image
-        src={theme === 'dark' ? '/icons/moon.svg' : '/icons/sun.svg'}
-        alt="sun"
-        className="dark:invert"
-        width={20}
-        height={20}
-        priority
-      />
-    </div>
+    <label
+      htmlFor="switch"
+      className="relative block h-7 w-12 cursor-pointer rounded-full bg-white/20 ring-[0.6px] inset-ring-[0.6px] shadow-black/10 ring-gray-400/25 inset-ring-white/20 backdrop-blur-md transition-colors duration-300 ease-in-out peer-checked:bg-emerald-400/30 peer-checked:shadow-[0_0_8px_2px_rgba(16,185,129,0.4)] dark:bg-black/30 dark:inset-ring-0 dark:shadow-white/5 dark:ring-white/40 dark:peer-checked:bg-emerald-500/40 dark:peer-checked:shadow-[0_0_10px_2px_rgba(52,211,153,0.3)]"
+    >
+      <input onChange={toggleTheme} checked={theme === 'light'} type="checkbox" id="switch" className="peer sr-only" />
+      <div className="absolute inset-y-0 left-0 m-1 size-5 rounded-full border border-white/40 bg-white/80 text-white shadow-md ring shadow-black/10 ring-gray-300/30 backdrop-blur-sm transition-all duration-300 ease-in-out peer-checked:left-5 peer-checked:bg-yellow-400/90 peer-checked:shadow-lg peer-checked:shadow-yellow-400/60 dark:border-white/20 dark:bg-white/40 dark:ring-0 dark:shadow-white/10 dark:peer-checked:bg-yellow-400/90 dark:peer-checked:shadow-yellow-400/70"></div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="#d2d4d8"
+        className="absolute inset-y-3 top-1/2 left-[7px] size-3.5 -translate-y-1/2 opacity-100 transition-all peer-checked:left-6 peer-checked:opacity-0"
+      >
+        <path
+          fillRule="evenodd"
+          d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+          clipRule="evenodd"
+        />
+      </svg>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="#fff"
+        className="absolute inset-y-0 top-1/2 left-0 size-4 -translate-y-1/2 opacity-0 transition-all peer-checked:left-6.5 peer-checked:opacity-100"
+      >
+        <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
+      </svg>
+    </label>
   );
 });
