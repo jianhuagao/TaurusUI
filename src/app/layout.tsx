@@ -30,7 +30,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="zh">
-      <body className={geist.className}>
+      <body className={`${geist.className} antialiased`}>
         <BackgroundProvider>
           <BackgroundComponent />
           <ThemeProvider>
