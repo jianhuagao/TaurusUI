@@ -146,28 +146,88 @@ export default async function Home() {
                 baseUrl={`/homeDemo`}
               />
             </FadeIn>
-            {/* <FadeIn once={true}>
-              <ComponentPrev
-                componentData={{
-                  id: '4',
-                  title: 'Card Demo',
-                  slug: 'demo',
-                  category: 'demo',
-                  wrapper: 'h-96',
-                  defaultCfg: '7',
-                  creator: '',
-                  innerWrapper: '',
-                  interactive: true,
-                  componentsName: ''
-                }}
-                baseUrl={`/homeDemo`}
-              />
-            </FadeIn> */}
             <FadeIn once={true}>
               <div className="mt-10 flex items-center justify-center opacity-70">
                 <Link href={docUrl} className="text-lg hover:text-blue-500 hover:underline">
                   More Components ...
                 </Link>
+              </div>
+            </FadeIn>
+            <FadeIn once={true}>
+              <div className="my-30 border-l border-dashed border-gray-400/40 dark:border-gray-500/60">
+                <div className="flex items-baseline gap-4 border-b border-dashed border-gray-400/40 px-16 py-14 dark:border-gray-500/60">
+                  <p className="bg-gradient-to-b bg-clip-text text-3xl font-bold dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
+                    Templates using this UI
+                  </p>
+                  <p className="text-xl text-gray-500 dark:text-gray-400">Libran</p>
+                </div>
+                <div className="flex flex-col gap-10 px-16 py-14 md:flex-row">
+                  <div className="flex flex-1 flex-col gap-4">
+                    <div className="flex items-center gap-4">
+                      <span className="relative inline-block rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-purple-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
+                        <span className="relative z-10">TwinkleUI</span>
+                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-purple-400/50 blur-[5px] dark:bg-purple-400/40"></span>
+                      </span>
+
+                      <span className="relative inline-block rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-emerald-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
+                        <span className="relative z-10">NextJS</span>
+                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-emerald-400/50 blur-[5px] dark:bg-emerald-400/40"></span>
+                      </span>
+
+                      <span className="relative inline-block rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-red-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
+                        <span className="relative z-10">TailwindCSS</span>
+                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-red-400/50 blur-[5px] dark:bg-red-400/40"></span>
+                      </span>
+
+                      <span className="relative inline-block rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-cyan-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
+                        <span className="relative z-10">Framer-motion</span>
+                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-cyan-400/50 blur-[5px] dark:bg-cyan-400/40"></span>
+                      </span>
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400">
+                      This official website template is built with TwinkleUI, Next.js, Tailwind CSS, and Framer-motion,
+                      combining modern UI components with powerful frameworks to create a stunning and responsive web
+                      experience. Leverage these technologies to build your own professional website with ease and efficiency.
+                    </p>
+
+                    <Link
+                      target="_blank"
+                      href="https://libran.cloveui.asia"
+                      className="group relative inline-flex w-32 cursor-pointer items-center justify-center rounded-xl bg-white/60 px-4 py-2 text-sm text-purple-800 no-underline ring-1 ring-gray-300/50 backdrop-blur-md transition-all duration-300 hover:shadow-lg active:scale-90 dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20 dark:hover:ring-white/50"
+                    >
+                      Go to Libran
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-4 w-0 transition-all group-hover:w-4"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                      </svg>
+                      <span className="pointer-events-none absolute right-2 bottom-2 z-0 size-5 rounded-full bg-purple-400/50 blur-[6px] transition-transform duration-300 ease-in-out group-hover:translate-1/2 dark:bg-purple-400/40"></span>
+                    </Link>
+                  </div>
+                  <div className="flex-1">
+                    <div className="relative">
+                      <Image
+                        className="absolute top-0 left-1/4 rounded-lg shadow-2xl"
+                        src="/resource/template/t2.jpg"
+                        width={400}
+                        height={200}
+                        alt="libran"
+                      />
+                      <Image
+                        className="absolute top-0 left-0 rounded-lg shadow-2xl"
+                        src="/resource/template/t1.png"
+                        width={400}
+                        height={200}
+                        alt="libran"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </FadeIn>
           </div>
