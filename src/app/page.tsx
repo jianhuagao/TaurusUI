@@ -37,7 +37,7 @@ export default async function Home() {
   const docUrl = redirect ? `/docs/comp/${redirect}` : '/docs';
 
   return (
-    <main className="relative overflow-x-hidden">
+    <main className="relative">
       <HomepageBg />
       <LayoutContent>
         <div className="mx-auto mt-9 flex max-w-7xl flex-col p-5 sm:p-20">
@@ -154,7 +154,7 @@ export default async function Home() {
               </div>
             </FadeIn>
             <FadeIn once={true}>
-              <div className="my-30 border-l border-dashed border-gray-400/40 dark:border-gray-500/60">
+              <div className="my-40 border-l border-dashed border-gray-400/40 dark:border-gray-500/60">
                 <div className="flex items-baseline gap-4 border-b border-dashed border-gray-400/40 px-16 py-14 dark:border-gray-500/60">
                   <p className="bg-gradient-to-b bg-clip-text text-3xl font-bold dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
                     Templates using this UI
@@ -210,30 +210,20 @@ export default async function Home() {
                     </Link>
                   </div>
                   <div className="flex-1">
-                    <div className="group relative mt-20 ml-auto min-h-[200px] pb-30 sm:pb-80 lg:mt-0 lg:pb-0">
+                    <div className="group relative">
                       <Image
-                        className="absolute -top-20 left-0 w-full max-w-[200px] -rotate-15 rounded-lg shadow-2xl sm:max-w-sm md:max-w-md"
-                        src="/resource/template/t3.jpg"
-                        alt="libran"
-                        width={400}
-                        height={200}
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 400px"
-                      />
-                      <Image
-                        className="absolute -top-10 left-20 w-full max-w-[200px] -rotate-5 rounded-lg shadow-2xl transition-transform duration-500 ease-in-out group-hover:translate-10 sm:max-w-sm md:max-w-md"
+                        className="absolute top-0 left-0 rounded-lg shadow-2xl"
                         src="/resource/template/t2.jpg"
-                        alt="libran"
                         width={400}
                         height={200}
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 400px"
+                        alt="libran"
                       />
                       <Image
-                        className="absolute top-0 left-40 w-full max-w-[200px] rounded-lg shadow-2xl transition-transform duration-500 ease-in-out group-hover:translate-20 sm:max-w-sm md:max-w-md"
+                        className="absolute top-0 left-1/5 rounded-lg shadow-2xl transition-transform duration-500 ease-in-out group-hover:translate-y-[40px]"
                         src="/resource/template/t1.png"
-                        alt="libran"
                         width={400}
                         height={200}
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 400px"
+                        alt="libran"
                       />
                     </div>
                   </div>

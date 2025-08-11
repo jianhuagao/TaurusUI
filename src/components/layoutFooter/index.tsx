@@ -3,21 +3,21 @@ import Image from 'next/image';
 
 export default memo(function Footer() {
   return (
-    <footer className="relative z-50 text-sm text-black/70 dark:text-white/70">
-      {/* <div className="absolute bottom-0 left-0 -z-10 opacity-85 dark:opacity-70">
-        <Image src="/bot.png" width={240} height={240} alt="" />
-      </div> */}
-      <div className="mx-auto mb-0 flex flex-col flex-wrap items-center gap-1 px-10 pt-10 pb-20 sm:flex-row sm:px-32 sm:pt-40 lg:px-72">
+    <footer className="relative z-50 border-t border-[#eaeaea] text-sm text-black/70 transition-all dark:border-[#333333] dark:text-white/70">
+      <div className="mx-auto mb-0 flex flex-col items-start gap-1 px-10 pt-12 pb-20 md:flex-row md:px-20 xl:px-72">
         <div>
           <div className="flex items-end gap-3">
             <Image src="/logo.svg" className="ml-1 opacity-70" width={28} height={28} alt="" />
-            <span className="text-xl font-semibold">Twinkle UI</span>
+            <span className="text-xl font-semibold">TwinkleUI</span>
+            <p className="text-xs/6 font-medium text-zinc-500 dark:text-zinc-400">
+              v1.0.0 @{process.env.NEXT_PUBLIC_BUILD_VERSION}
+            </p>
           </div>
           <div className="mt-5 flex flex-wrap items-center">
-            © 2024 Twinkle UI
+            © 2025 TwinkleUI
             <a
-              className="ml-1 text-purple-400 hover:underline"
-              href="https://github.com/jianhuagao/TwinkleUI?tab=MIT-1-ov-file"
+              className="text-primary ml-1 hover:underline"
+              href="https://github.com/jianhuagao/TwinkleUI?tab=MIT-1-ov-file#readme"
             >
               MIT License
             </a>
@@ -27,10 +27,15 @@ export default memo(function Footer() {
             </a>
           </div>
         </div>
-        <div className="mt-5 grid grid-cols-2 gap-16 sm:mt-0 sm:ml-auto">
+        <div className="mt-5 grid grid-cols-2 gap-16 md:mt-0 md:ml-auto">
           <div>
             <p className="mb-3 text-black/80 dark:text-white/80">SITE</p>
             <ul className="leading-5 opacity-60">
+              <li>
+                <a href="https://github.com/jianhuagao/Libran" target="_blank" className="hover:underline">
+                  Libran
+                </a>
+              </li>
               <li>
                 <a href="https://vercel.com" target="_blank" className="hover:underline">
                   Vercel

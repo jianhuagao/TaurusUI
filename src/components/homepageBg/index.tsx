@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 
 import FloatingBackground from '../framerMotions/floatingBackground';
 import AnimatedShow from '../framerMotions/animatedShow';
@@ -15,7 +15,7 @@ export default function HomepageBg() {
               factor: 8,
               scaleFactor: 0.5,
               element: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="44" viewBox="0 0 640 512">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="33" viewBox="0 0 640 512">
                   <path
                     fill="#3b82f6"
                     d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"
@@ -29,7 +29,7 @@ export default function HomepageBg() {
               factor: 15,
               scaleFactor: 0.2,
               element: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24">
                   <path
                     fill="none"
                     stroke="#818cf8"
@@ -47,7 +47,7 @@ export default function HomepageBg() {
               className: 'absolute left-[15%] top-[32%]',
               factor: 20,
               element: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24">
                   <path
                     fill="#ec4899"
                     d="M20 11h3v2h-3zM1 11h3v2H1zM13 1v3h-2V1zM4.92 3.5l2.13 2.14l-1.42 1.41L3.5 4.93zm12.03 2.13l2.12-2.13l1.43 1.43l-2.13 2.12zM12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1zm-3-3h2v-2.13c1.73-.44 3-2.01 3-3.87a4 4 0 0 0-4-4a4 4 0 0 0-4 4c0 1.86 1.27 3.43 3 3.87z"
@@ -61,7 +61,7 @@ export default function HomepageBg() {
               factor: 10,
               scaleFactor: 0.5,
               element: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24">
                   <path
                     fill="#fde047"
                     fillRule="evenodd"
@@ -77,7 +77,7 @@ export default function HomepageBg() {
               factor: 25,
               scaleFactor: 0.6,
               element: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24">
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24">
                   <g fill="none" stroke="#a855f7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
                     <circle cx="12" cy="32" r="6" fill="#a855f7" fillOpacity=".3">
                       <animate fill="freeze" attributeName="cy" dur="0.6s" values="32;12" />
@@ -118,17 +118,17 @@ export default function HomepageBg() {
                   </g>
                 </svg>
               )
-            },
-            {
-              id: 6,
-              className: 'absolute top-[42%] right-[11%]',
-              factor: 50,
-              element: (
-                <div>
-                  <Image src="/rbt.png" width={560} height={560} alt="" />
-                </div>
-              )
             }
+            // {
+            //   id: 6,
+            //   className: 'absolute top-[42%] right-[11%]',
+            //   factor: 50,
+            //   element: (
+            //     <div>
+            //       <Image src="/rbt.png" width={560} height={560} alt="" />
+            //     </div>
+            //   )
+            // }
           ]}
         />
         <div></div>
