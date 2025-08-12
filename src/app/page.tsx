@@ -180,14 +180,14 @@ export default async function Home() {
                       </span>
 
                       <span className="relative inline-block shrink-0 rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-cyan-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
-                        <span className="relative z-10">Framer-motion</span>
+                        <span className="relative z-10">Motion</span>
                         <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-cyan-400/50 blur-[5px] dark:bg-cyan-400/40"></span>
                       </span>
                     </div>
                     <p className="text-gray-500 dark:text-gray-400">
-                      This official website template is built with TwinkleUI, Next.js, Tailwind CSS, and Framer-motion,
-                      combining modern UI components with powerful frameworks to create a stunning and responsive web
-                      experience. Leverage these technologies to build your own professional website with ease and efficiency.
+                      This official website template is built with TwinkleUI, Next.js, Tailwind CSS, and Motion, combining
+                      modern UI components with powerful frameworks to create a stunning and responsive web experience. Leverage
+                      these technologies to build your own professional website with ease and efficiency.
                     </p>
 
                     <Link

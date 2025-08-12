@@ -3,7 +3,7 @@ import { memo, useCallback, useContext, useEffect, useRef, useState } from 'reac
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import ThemeContext from '@/context/themeContext';
 import { ComponentData } from '@/service/dataService';

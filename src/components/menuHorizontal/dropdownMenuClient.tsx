@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useDropdownMenu } from './dropdownMenuContext';
 import clsx from 'clsx';
 import AnimatedShow from '../framerMotions/animatedShow';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 interface DropdownMenuClientProps {
   id: string;

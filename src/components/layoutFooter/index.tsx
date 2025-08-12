@@ -53,7 +53,7 @@ export default memo(function Footer() {
               </li>
               <li>
                 <a href="https://motion.dev" target="_blank" className="hover:underline">
-                  Framer-motion
+                  Motion
                 </a>
               </li>
             </ul>

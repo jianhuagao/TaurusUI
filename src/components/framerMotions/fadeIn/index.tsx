@@ -1,6 +1,6 @@
 'use client';
 import { memo, useMemo } from 'react';
-import { HTMLMotionProps, Variants, motion } from 'framer-motion';
+import { HTMLMotionProps, Variants, motion } from 'motion/react';
 
 type TransitionType = 'spring' | 'tween' | 'inertia';
 interface FadeInProps extends HTMLMotionProps<'div'> {
