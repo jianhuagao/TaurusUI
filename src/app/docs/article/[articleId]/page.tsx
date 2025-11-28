@@ -20,7 +20,7 @@ export default memo(async function Page({ params }: { params: Promise<PageParams
     '@context': 'http://schema.org',
     '@type': 'NewsArticle',
     headline: `${data.title}`,
-    image: 'https://twinkle.jhub.space/og.png',
+    image: 'https://taurus.jhub.space/og.png',
     datePublished: `${data.date}`
   };
 

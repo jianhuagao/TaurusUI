@@ -54,7 +54,7 @@ export default async function Home() {
             </h1>
             <div className="mt-16 mb-24 flex items-center justify-center gap-5">
               <Link
-                href="https://github.com/jianhuagao/TwinkleUI"
+                href="https://github.com/jianhuagao/TaurusUI"
                 target="_blank"
                 className="group relative inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-white/60 px-4 py-2 text-sm ring-1 ring-gray-300/50 backdrop-blur-md transition-all duration-300 hover:shadow-lg active:scale-90 dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20 dark:hover:ring-white/50"
               >
@@ -165,7 +165,7 @@ export default async function Home() {
                   <div className="flex flex-1 flex-col gap-4">
                     <div className="flex items-center gap-4">
                       <span className="relative inline-block shrink-0 rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-purple-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
-                        <span className="relative z-10">TwinkleUI</span>
+                        <span className="relative z-10">TaurusUI</span>
                         <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-purple-400/50 blur-[5px] dark:bg-purple-400/40"></span>
                       </span>
 
@@ -185,9 +185,9 @@ export default async function Home() {
                       </span>
                     </div>
                     <p className="text-gray-500 dark:text-gray-400">
-                      This official website template is built with TwinkleUI, Next.js, Tailwind CSS, and Motion, combining
-                      modern UI components with powerful frameworks to create a stunning and responsive web experience. Leverage
-                      these technologies to build your own professional website with ease and efficiency.
+                      This official website template is built with TaurusUI, Next.js, Tailwind CSS, and Motion, combining modern
+                      UI components with powerful frameworks to create a stunning and responsive web experience. Leverage these
+                      technologies to build your own professional website with ease and efficiency.
                     </p>
 
                     <Link

@@ -12,7 +12,7 @@ import LayoutModeSwitch from '@/components/layoutModeSwitch';
 import MenuHorizontal from '@/components/menuHorizontal';
 
 export const metadata: Metadata = {
-  title: 'TwinkleUI-Docs',
+  title: 'TaurusUI-Docs',
   description: 'A Tailwind CSS component library'
 };
 

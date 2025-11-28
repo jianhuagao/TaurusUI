@@ -19,7 +19,7 @@ import { LayoutProvider } from '@/context/layoutContext';
 // });
 
 export const metadata: Metadata = {
-  title: 'TwinkleUI',
+  title: 'TaurusUI',
   description: 'A Tailwind CSS component library'
 };
 
