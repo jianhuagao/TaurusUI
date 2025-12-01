@@ -42,7 +42,7 @@ export default async function Home() {
       <LayoutContent>
         <div className="mx-auto mt-9 flex max-w-7xl flex-col p-5 sm:p-20">
           <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="flex flex-col gap-12">
-            <h1 className="group z-10 bg-gradient-to-b bg-clip-text text-center text-6xl font-bold transition-all dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
+            <h1 className="group z-10 bg-linear-to-b bg-clip-text text-center text-6xl font-bold transition-all dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
               <ChangeBg className="cursor-pointer leading-20 select-none">
                 <span className="group-hover:ml-0">Component </span>
                 library built with TailwindCSS
@@ -156,7 +156,7 @@ export default async function Home() {
             <FadeIn once={true}>
               <div className="my-40 border-l border-dashed border-gray-400/40 dark:border-gray-500/60">
                 <div className="flex items-baseline gap-4 border-b border-dashed border-gray-400/40 px-16 py-14 dark:border-gray-500/60">
-                  <p className="bg-gradient-to-b bg-clip-text text-3xl font-bold dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
+                  <p className="bg-linear-to-b bg-clip-text text-3xl font-bold dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
                     Templates using this UI
                   </p>
                   <p className="text-xl text-gray-500 dark:text-gray-400">Libran</p>

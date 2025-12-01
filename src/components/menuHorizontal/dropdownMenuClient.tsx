@@ -62,7 +62,7 @@ export default function DropdownMenuClient({ id, buttonLabel, items }: DropdownM
               duration: 0.6,
               bounce: 0.5
             }}
-            className="fixed z-[9999] w-56 rounded-2xl bg-white/60 p-3 text-sm text-gray-700 shadow-2xl ring-1 ring-gray-400/10 backdrop-blur-2xl dark:bg-black/20 dark:text-white dark:ring-white/10"
+            className="fixed z-9999 w-56 rounded-2xl bg-white/60 p-3 text-sm text-gray-700 shadow-2xl ring-1 ring-gray-400/10 backdrop-blur-2xl dark:bg-black/20 dark:text-white dark:ring-white/10"
             style={{ top: position.top, left: position.left }}
           >
             <AnimatedShow staggerChildren={0.1}>

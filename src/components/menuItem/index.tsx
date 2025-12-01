@@ -71,7 +71,7 @@ export const PlayMenuItem = ({ children }: { children: React.ReactNode }) => {
 
 export const HrefMenuItem = ({ children, href }: { children: React.ReactNode; href: string }) => {
   return (
-    <Link target="_blank" href={href} className={clsx(articleMenuItemPubClass, articleMenuItemHoverClass, '!cursor-alias')}>
+    <Link target="_blank" href={href} className={clsx(articleMenuItemPubClass, articleMenuItemHoverClass, 'cursor-alias!')}>
       {children}
     </Link>
   );

@@ -190,7 +190,7 @@ export default memo(function ComponentPrev({ baseUrl, componentData }: Component
                 <Image
                   onClick={() => setCodeType('html')}
                   src="/icons/html.svg"
-                  className={clsx(codeType === 'html' && iconSelectClassNames, iconClassNames, '!p-[3px]')}
+                  className={clsx(codeType === 'html' && iconSelectClassNames, iconClassNames, 'p-[3px]!')}
                   width={22}
                   height={22}
                   alt=""
@@ -198,7 +198,7 @@ export default memo(function ComponentPrev({ baseUrl, componentData }: Component
                 <Image
                   onClick={() => setCodeType('jsx')}
                   src="/icons/reactjs.svg"
-                  className={clsx(codeType === 'jsx' && iconSelectClassNames, iconClassNames, '!p-[3px]')}
+                  className={clsx(codeType === 'jsx' && iconSelectClassNames, iconClassNames, 'p-[3px]!')}
                   width={22}
                   height={22}
                   alt=""
@@ -206,7 +206,7 @@ export default memo(function ComponentPrev({ baseUrl, componentData }: Component
                 <Image
                   onClick={() => setCodeType('vue')}
                   src="/icons/vuejs.svg"
-                  className={clsx(codeType === 'vue' && iconSelectClassNames, iconClassNames, '!p-[3px]')}
+                  className={clsx(codeType === 'vue' && iconSelectClassNames, iconClassNames, 'p-[3px]!')}
                   width={22}
                   height={22}
                   alt=""
@@ -261,7 +261,7 @@ export default memo(function ComponentPrev({ baseUrl, componentData }: Component
                       >
                         {url && <Image src={url} alt="i" fill quality={30} style={{ objectFit: 'cover' }} />}
                         {s.classNames === '' && (
-                          <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(45deg,_#ccc_0px,_#ccc_2px,_transparent_2px,_transparent_6px)] opacity-90 dark:opacity-50" />
+                          <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(45deg,#ccc_0px,#ccc_2px,transparent_2px,transparent_6px)] opacity-90 dark:opacity-50" />
                         )}
                       </div>
                     );
