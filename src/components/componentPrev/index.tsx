@@ -259,7 +259,7 @@ export default memo(function ComponentPrev({ baseUrl, componentData }: Component
                           selectClassName(s.classNames);
                         }}
                       >
-                        {url && <Image src={url} alt="i" fill quality={30} style={{ objectFit: 'cover' }} />}
+                        {url && <Image src={url} alt="" fill quality={20} style={{ objectFit: 'cover' }} />}
                         {s.classNames === '' && (
                           <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(45deg,#ccc_0px,#ccc_2px,transparent_2px,transparent_6px)] opacity-90 dark:opacity-50" />
                         )}
