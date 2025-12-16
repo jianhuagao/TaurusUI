@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
+import React from 'react';
 import { isValidElement, memo, useMemo } from 'react';
 
 type WithDataOriginalClassName = {
@@ -8,7 +9,7 @@ type WithDataOriginalClassName = {
 };
 
 interface AnimatedShowProps {
-  children: React.ReactNode[];
+  children: React.ReactNode[] | React.ReactNode;
   className?: string;
   inViewShow?: boolean;
   scale?: number;
@@ -49,6 +50,8 @@ const AnimatedShow = ({
     [scale, childDuration]
   );
 
+  const arrChildren = React.Children.toArray(children);
+
   return (
     <motion.div
       initial="hidden"
@@ -57,7 +60,7 @@ const AnimatedShow = ({
       variants={animationVariants}
       className={className}
     >
-      {children.map((child, index) => {
+      {arrChildren.map((child, index) => {
         let originalClassName = '';
         if (isValidElement(child)) {
           const props = child.props as unknown as WithDataOriginalClassName;
