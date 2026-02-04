@@ -23,14 +23,12 @@ const spanArr = [
 ];
 
 export default memo(function CollectionList({ componentsData }: { componentsData: ComponentData[] }) {
+  const itemClassNames = componentsData.map(x => (x.span ? spanArr[Number(x.span)] : spanArr[0]));
   return (
-    <AnimatedShow className="grid grid-cols-12 gap-x-8 gap-y-6">
+    <AnimatedShow itemClassNames={itemClassNames} className="grid grid-cols-12 gap-x-8 gap-y-6">
       {componentsData.map(componentData => {
-        const span = Number(componentData.span || 0);
-        const spanClass = spanArr[span];
         return (
           <ComponentPrev
-            data-originalClassName={spanClass}
             key={componentData.id}
             baseUrl={`/components/${lowercaseFirstLetter(componentData.componentsName)}`}
             componentData={componentData}

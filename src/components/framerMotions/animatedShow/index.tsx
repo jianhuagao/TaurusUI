@@ -2,11 +2,7 @@
 
 import { motion } from 'motion/react';
 import React from 'react';
-import { isValidElement, memo, useMemo } from 'react';
-
-type WithDataOriginalClassName = {
-  'data-originalClassName'?: string;
-};
+import { memo, useMemo } from 'react';
 
 interface AnimatedShowProps {
   children: React.ReactNode[] | React.ReactNode;
@@ -16,6 +12,9 @@ interface AnimatedShowProps {
   duration?: number;
   childDuration?: number;
   staggerChildren?: number;
+  itemClassNames?: string[];
+  visibleDelay?: number;
+  hiddenDelay?: number;
 }
 
 const AnimatedShow = ({
@@ -25,21 +24,37 @@ const AnimatedShow = ({
   duration = 1,
   childDuration = 0.4,
   staggerChildren = 0.2,
-  inViewShow = false
+  itemClassNames = [],
+  inViewShow = false,
+  visibleDelay = 0,
+  hiddenDelay = 0
 }: AnimatedShowProps) => {
   const animationVariants = useMemo(
     () => ({
-      hidden: { opacity: 0, transform: `scale(${scale})` },
+      hidden: {
+        opacity: 0,
+        transform: `scale(${scale})`,
+        transition: {
+          duration,
+          staggerChildren,
+          type: 'spring' as const,
+          bounce: 0.4,
+          delay: hiddenDelay
+        }
+      },
       visible: {
         opacity: 1,
         transform: 'scale(1)',
         transition: {
           duration,
-          staggerChildren
+          staggerChildren,
+          type: 'spring' as const,
+          bounce: 0.4,
+          delay: visibleDelay
         }
       }
     }),
-    [scale, duration, staggerChildren]
+    [scale, duration, staggerChildren, visibleDelay, hiddenDelay]
   );
 
   const childVariants = useMemo(
@@ -61,13 +76,8 @@ const AnimatedShow = ({
       className={className}
     >
       {arrChildren.map((child, index) => {
-        let originalClassName = '';
-        if (isValidElement(child)) {
-          const props = child.props as unknown as WithDataOriginalClassName;
-          originalClassName = props['data-originalClassName'] ?? '';
-        }
         return (
-          <motion.span key={index} className={originalClassName} variants={childVariants}>
+          <motion.span key={index} className={itemClassNames[index] || ''} variants={childVariants}>
             {child}
           </motion.span>
         );
