@@ -19,10 +19,10 @@ export default async function MenuHorizontal() {
       <div className="mx-3 hidden h-4 w-1 rounded-full bg-[#e0e0e0] xl:block dark:bg-[#e0e0e0]/60"></div>
       <DropdownMenuProvider>
         <div className="flex w-full grow flex-col items-start gap-2 xl:w-auto xl:flex-row xl:items-center">
-          {componentsByCategory.map(({ title, children }, index) => {
+          {componentsByCategory.map(({ title, children, slug }, index) => {
             return (
               <div key={title} className="relative">
-                <DropdownMenuClient id={`menu-${index}`} buttonLabel={title} items={children || []} />
+                <DropdownMenuClient id={`menu-${index}`} buttonLabel={title} slug={slug} items={children || []} />
               </div>
             );
           })}
