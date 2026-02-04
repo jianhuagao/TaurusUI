@@ -42,8 +42,8 @@ export default async function Home() {
       <LayoutContent>
         <div className="mx-auto mt-9 flex max-w-7xl flex-col p-5 sm:p-20">
           <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="flex flex-col gap-12">
-            <h1 className="group z-10 bg-linear-to-b bg-clip-text text-center text-6xl font-bold transition-all dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
-              <ChangeBg className="cursor-pointer leading-20 select-none">
+            <h1 className="group z-10 bg-linear-to-b bg-clip-text text-center text-4xl font-bold transition-all lg:text-6xl dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
+              <ChangeBg className="cursor-pointer leading-14 select-none lg:leading-20">
                 <span className="group-hover:ml-0">Component </span>
                 library built with TailwindCSS
               </ChangeBg>
@@ -163,7 +163,7 @@ export default async function Home() {
                 </div>
                 <div className="flex flex-col gap-10 px-16 py-14 md:flex-row">
                   <div className="flex flex-1 flex-col gap-4">
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-4">
                       <span className="relative inline-block shrink-0 rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-purple-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
                         <span className="relative z-10">TaurusUI</span>
                         <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-purple-400/50 blur-[5px] dark:bg-purple-400/40"></span>
