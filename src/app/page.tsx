@@ -116,13 +116,12 @@ export default async function Home() {
               <ComponentPrev
                 componentData={{
                   id: '2',
-                  title: 'Card Demo',
+                  title: 'Switch Demo',
                   slug: 'demo',
-                  defaultCfg: '10-12',
+                  defaultCfg: '10-13',
                   category: 'demo',
-                  wrapper: 'h-[500px]',
+                  wrapper: 'h-52',
                   creator: '',
-                  innerWrapper: '1 !px-0 !block',
                   interactive: true,
                   componentsName: ''
                 }}
@@ -137,9 +136,9 @@ export default async function Home() {
                   slug: 'demo',
                   category: 'demo',
                   defaultCfg: '16-14',
-                  wrapper: 'h-96',
+                  wrapper: 'h-80',
                   creator: '',
-                  innerWrapper: 'px-[20%] *:flex-1 !flex-row',
+                  innerWrapper: 'px-[20%] *:flex-1 flex-row!',
                   interactive: true,
                   componentsName: ''
                 }}
