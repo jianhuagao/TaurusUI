@@ -19,8 +19,6 @@ export const metadata: Metadata = {
 const hoverClass = 'hover:bg-white/40 hover:dark:bg-[#18181b]/40 rounded-lg cursor-pointer select-none';
 const miniText = 'text-xs/6 font-medium text-zinc-500 dark:text-zinc-400';
 
-// TODO: 此处有服务端渲染和客户端不一致的bug,待修复
-// BUG: 此处有服务端渲染和客户端不一致的bug,待修复
 export default function DocLayout({
   children
 }: Readonly<{
