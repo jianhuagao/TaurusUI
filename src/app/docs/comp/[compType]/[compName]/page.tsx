@@ -46,7 +46,7 @@ export default memo(async function Page({ params }: { params: Promise<PageParams
         <div className="mt-8 border-t border-t-black/10 pt-4 dark:border-t-white/15">
           <h6>相关文章</h6>
           <ul>
-            {Object.values(articles.articles)?.map(article => {
+            {articles?.map(article => {
               return (
                 <li key={article.articleId} className="leading-3">
                   <Link className="text-sm no-underline hover:underline" href={`/docs/article/${article.articleId}`}>
