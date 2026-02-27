@@ -78,7 +78,11 @@ export async function getCollection(params: { compType: string; compName: string
     const componentItem = await fs.readFile(componentPath, 'utf-8');
 
     const mdxSource = await serialize<ComponentData, ComponentData>(componentItem, {
-      parseFrontmatter: true
+      parseFrontmatter: true,
+      // 允许 JS 表达式（有风险）
+      blockJS: false,
+      // 默认 true：尽量挡掉危险全局（仍建议保留）
+      blockDangerousJS: true
     });
 
     return {
@@ -116,7 +120,11 @@ export async function getArticlesDic(ids?: string[]) {
     const componentItem = await fs.readFile(directoryDicPath, 'utf-8');
 
     const mdxSource = await serialize<ArticleDicMdxProps, ArticleDicMdxProps>(componentItem, {
-      parseFrontmatter: true
+      parseFrontmatter: true,
+      // 允许 JS 表达式（有风险）
+      blockJS: false,
+      // 默认 true：尽量挡掉危险全局（仍建议保留）
+      blockDangerousJS: true
     });
     const filteredArticles = filterPublishedArticles(mdxSource.frontmatter);
     if (ids && filteredArticles) {
@@ -169,7 +177,11 @@ export async function getArticles(id: number) {
     const componentItem = await fs.readFile(directoryDicPath, 'utf-8');
 
     const mdxSource = await serialize<ArticleMdxProps, ArticleMdxProps>(componentItem, {
-      parseFrontmatter: true
+      parseFrontmatter: true,
+      // 允许 JS 表达式（有风险）
+      blockJS: false,
+      // 默认 true：尽量挡掉危险全局（仍建议保留）
+      blockDangerousJS: true
     });
 
     return {
