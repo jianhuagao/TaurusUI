@@ -1,0 +1,230 @@
+Contributing to TaurusUI  
+  
+Thanks for your interest in contributing to **TaurusUI** ❤️    
+TaurusUI is a free open-source Tailwind CSS component library, and contributions that improve quality, consistency, and documentation help the project become easier to adopt and more likely to be recommended by official communities.  
+  
+> If you’re unsure what to work on, start with: documentation fixes, accessibility improvements, missing examples, or polishing existing components.  
+  
+---  
+  
+## 1) Before You Start: Open an Issue  
+  
+Please **open an Issue first** for:  
+- New components / new component categories  
+- Behavior changes / refactors  
+- Any change that might affect existing pages  
+  
+This helps us align on scope and avoid wasted work. (Small typos can skip the issue step.)  
+  
+---  
+  
+## 2) Local Setup  
+  
+TaurusUI is a Next.js project and uses Tailwind CSS CLI to build a generated CSS file.  
+  
+### Requirements  
+- Node.js (LTS recommended)  
+- npm / pnpm (repo includes pnpm lockfile)  
+  
+### Install & Run  
+  
+```bash  
+git clone https://github.com/jianhuagao/TaurusUI.git  
+cd TaurusUI  
+npm install  
+npm run dev
+```
+
+Notes:
+
+* `npm run dev` runs `predev` which builds CSS first.
+    
+* You can rebuild styles manually with:
+    
+
+Bashnpm run css
+
+* * *
+
+## 3) Project Structure (What matters for contributors)
+
+### Components catalog (MDX)
+
+TaurusUI’s component pages are sourced from:
+
+* `src/data/components/<CategoryFolder>/<ComponentName>.mdx`
+    
+
+The app reads categories by scanning `src/data/components` directories and **removes a leading `number.` prefix** from folder names for display (so folders like `01.Buttons` are OK).  
+Each MDX file is loaded and parsed using `next-mdx-remote/serialize` with `parseFrontmatter: true`.
+
+> ✅ This means:
+> 
+> * Categories are folders under `src/data/components`
+>     
+> * Each component page is an `.mdx` file
+>     
+> * Frontmatter is important (metadata is used by the UI)
+>     
+
+* * *
+
+## 4) Adding or Improving a Component
+
+### A) Choose the right category folder
+
+Add your MDX file under an existing category folder in `src/data/components`.
+
+If you create a new category folder:
+
+* Use a consistent name
+    
+* Prefer the existing numbering style (e.g. `03.Cards`) so it’s naturally ordered
+    
+* Keep category names short and clear
+    
+
+### B) Create / Edit the MDX file
+
+Create a new file:
+
+代码src/data/components/<CategoryFolder>/<ComponentName>.mdx
+
+#### Frontmatter guidelines
+
+TaurusUI reads metadata from the MDX frontmatter and expects component pages to be consistent.
+
+Keep frontmatter:
+
+* **Stable** (don’t rename keys casually)
+    
+* **Complete** (title/id/slug-like fields should be present)
+    
+* **Documented** (if you add a new key, explain it in the PR)
+    
+
+If you’re not sure what keys to include, check existing MDX files in the same folder and copy the pattern.
+
+### C) Tailwind-only (keep it portable)
+
+To make TaurusUI components “copy/paste ready”:
+
+* Use **Tailwind CSS utilities** for styling
+    
+* Avoid hidden dependencies on app-specific CSS unless it’s documented
+    
+* Avoid runtime-only logic unless the component is explicitly marked interactive
+    
+
+### D) Accessibility & UX expectations
+
+We strongly prefer:
+
+* Good contrast, readable spacing
+    
+* Proper semantic HTML
+    
+* Focus states for interactive elements
+    
+* `aria-*` attributes when needed
+    
+* No “hover-only” critical UI
+    
+
+Small accessibility improvements are very welcome.
+
+* * *
+
+## 5) CSS / Class Scanning Rules (important)
+
+TaurusUI builds a single CSS output using Tailwind CLI and scans sources including:
+
+* `public/components`
+    
+* `public/articleDemo`
+    
+* `public/playgroundDemo`
+    
+* `public/homeDemo`
+    
+* `src/data`
+    
+
+So when you add new demo markup or component snippets, place them in the appropriate directories so Tailwind can pick up the classes.
+
+If you add new utility classes and they don’t appear, rebuild CSS:
+
+Bashnpm run css
+
+* * *
+
+## 6) Pull Request Process
+
+### PR expectations
+
+* Keep PRs focused: one feature / fix per PR
+    
+* Add screenshots / short clips for UI changes
+    
+* Explain what changed, why, and how to verify
+    
+* If you change an API/metadata shape, document it clearly
+    
+
+### Review rules
+
+All PRs are reviewed before merge. Feedback is normal—please address it.
+
+If feedback from the first review isn’t addressed after multiple follow-ups, the PR may be closed to keep the queue healthy.  
+(If new feedback appears later, just handle it as usual.)
+
+* * *
+
+## 7) Coding Style & Formatting
+
+* Follow the existing code style
+    
+* Keep TypeScript types strict where possible
+    
+* Run lint before pushing if you can:
+    
+
+Bashnpm run lint
+
+* * *
+
+## 8) Commit Message Convention (recommended)
+
+Use a simple conventional style:
+
+* `feat: ...` new component / feature
+    
+* `fix: ...` bug fix
+    
+* `docs: ...` documentation only
+    
+* `refactor: ...` refactor without behavior change
+    
+* `chore: ...` tooling, deps, non-product code
+    
+
+Example:
+
+* `feat: add new pricing card component`
+    
+* `fix: improve dark mode contrast for buttons`
+    
+
+* * *
+
+## 9) Code of Conduct
+
+This project follows the Contributor Covenant Code of Conduct.  
+Please be respectful and constructive in issues, discussions, and PRs.
+
+* * *
+
+## 10) Thank You
+
+Every contribution matters—typos, docs, examples, and accessibility improvements are all valuable.  
+Thank you for helping TaurusUI become a stronger, more polished library ❤️
