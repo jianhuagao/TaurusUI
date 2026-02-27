@@ -5,7 +5,7 @@ import AnimatedShow from '../framerMotions/animatedShow';
 
 export default function HomepageBg() {
   return (
-    <div className="pointer-events-none absolute top-0 left-0 -z-10 h-screen w-full bg-[url(/grid.svg)] mask-[linear-gradient(180deg,white_1%,rgba(255,255,255,0)_98%)] bg-center dark:bg-[url(/gridDark.svg)]">
+    <div className="pointer-events-none absolute top-0 left-0 -z-10 h-screen w-full max-w-[100vw] overflow-hidden bg-[url(/grid.svg)] mask-[linear-gradient(180deg,white_1%,rgba(255,255,255,0)_98%)] bg-center dark:bg-[url(/gridDark.svg)]">
       <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="h-full">
         <FloatingBackground
           items={[
