@@ -110,6 +110,13 @@ export interface ArticleDicMdxProps {
     [key: string]: ArticleDicProps;
   };
 }
+
+function toSortedArticlesArray(data: ArticleDicMdxProps) {
+  return Object.values(data.articles)
+    .filter(a => a.isPublished)
+    .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+}
+
 /**
  * 获取Articles目录信息
  */
@@ -126,41 +133,19 @@ export async function getArticlesDic(ids?: string[]) {
       // 默认 true：尽量挡掉危险全局（仍建议保留）
       blockDangerousJS: true
     });
-    const filteredArticles = filterPublishedArticles(mdxSource.frontmatter);
-    if (ids && filteredArticles) {
-      return filterArticlesByIds(ids, filteredArticles);
+    const sortedArr = toSortedArticlesArray(mdxSource.frontmatter);
+
+    if (ids?.length) {
+      // ids 是字符串数组：["2","1"] 这种
+      const idSet = new Set(ids.map(String));
+      return sortedArr.filter(a => idSet.has(String(a.articleId)));
     }
-    return filteredArticles;
+
+    return sortedArr;
   } catch {
     notFound();
   }
 }
-
-function filterPublishedArticles(data: ArticleDicMdxProps): ArticleDicMdxProps {
-  const filteredArticles = Object.entries(data.articles)
-    .filter(([, article]) => article.isPublished)
-    .reduce(
-      (acc, [key, article]) => {
-        acc[key] = article;
-        return acc;
-      },
-      {} as Record<string, ArticleDicProps>
-    );
-
-  return { articles: filteredArticles };
-}
-
-const filterArticlesByIds = (input: string[], data: ArticleDicMdxProps): ArticleDicMdxProps => {
-  const filteredArticles: Record<string, ArticleDicProps> = {};
-
-  input.forEach(id => {
-    if (data.articles[id]) {
-      filteredArticles[id] = data.articles[id];
-    }
-  });
-
-  return { articles: filteredArticles };
-};
 
 interface ArticleMdxProps extends Record<string, unknown> {
   title: string;

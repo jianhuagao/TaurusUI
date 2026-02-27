@@ -4,7 +4,7 @@ import React from 'react';
 import MenuItem, { ArticleMenuItem, HrefMenuItem } from '../menuItem';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArticleDicMdxProps, getArticlesDic, getComponents } from '@/service/dataService';
+import { getArticlesDic, getComponents } from '@/service/dataService';
 
 const miniText = 'text-xs/6 font-medium text-zinc-500 dark:text-zinc-400';
 
@@ -17,7 +17,7 @@ export interface MenuItemProps {
 export default memo(async function Menu() {
   const componentsByCategory = await getComponents();
 
-  const { articles }: ArticleDicMdxProps = await getArticlesDic();
+  const sortedArr = await getArticlesDic();
 
   return (
     <div className="flex grow flex-col overflow-hidden">
@@ -55,7 +55,7 @@ export default memo(async function Menu() {
             Playground
           </HrefMenuItem>
           <ul className="list-none text-xs opacity-80">
-            {Object.values(articles)?.map(s => (
+            {sortedArr?.map(s => (
               <li key={s.articleId}>
                 <Link
                   href={`/docs/article/${s.articleId}`}
