@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import ComponentPrev from '@/components/componentPrev';
 import FadeIn from '@/components/framerMotions/fadeIn';
@@ -236,24 +237,66 @@ export default async function Home() {
 
           <FadeIn once={true} offscreenY={35}>
             <section className="overflow-hidden rounded-3xl border border-black/10 bg-white/80 p-8 sm:p-10 dark:border-white/15 dark:bg-white/5">
-              <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
-                <div className="max-w-2xl space-y-4">
+              <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div className="space-y-6">
                   <p className="text-xs tracking-[0.2em] text-black/45 uppercase dark:text-white/50">Template</p>
-                  <h2 className={`${geist.className} text-3xl leading-tight font-semibold sm:text-4xl`}>
+                  <h2 className={`${geist.className} max-w-2xl text-3xl leading-tight font-semibold sm:text-4xl`}>
                     Start from the official Taurus website template
                   </h2>
-                  <p className="text-sm leading-relaxed text-black/65 dark:text-white/65">
+                  <p className="max-w-2xl text-sm leading-relaxed text-black/65 dark:text-white/65">
                     The Libran template demonstrates how TaurusUI works with Next.js, TailwindCSS, and Motion to deliver a
                     clean, high-end product surface quickly.
                   </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="rounded-lg border border-black/10 bg-white/70 px-3 py-1.5 text-xs text-black/70 dark:border-white/15 dark:bg-white/8 dark:text-white/70">
+                      TaurusUI
+                    </span>
+                    <span className="rounded-lg border border-black/10 bg-white/70 px-3 py-1.5 text-xs text-black/70 dark:border-white/15 dark:bg-white/8 dark:text-white/70">
+                      Next.js
+                    </span>
+                    <span className="rounded-lg border border-black/10 bg-white/70 px-3 py-1.5 text-xs text-black/70 dark:border-white/15 dark:bg-white/8 dark:text-white/70">
+                      TailwindCSS
+                    </span>
+                    <span className="rounded-lg border border-black/10 bg-white/70 px-3 py-1.5 text-xs text-black/70 dark:border-white/15 dark:bg-white/8 dark:text-white/70">
+                      Motion
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <Link
+                      target="_blank"
+                      href="https://libran.jhub.space"
+                      className="inline-flex items-center justify-center rounded-xl bg-black px-5 py-2.5 text-sm font-medium text-white transition hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/85"
+                    >
+                      Open Libran
+                    </Link>
+                    <Link
+                      href={docUrl}
+                      className="inline-flex items-center justify-center rounded-xl border border-black/15 bg-white/70 px-5 py-2.5 text-sm font-medium text-black/80 transition hover:border-black/25 hover:bg-white dark:border-white/20 dark:bg-white/5 dark:text-white/80 dark:hover:border-white/35 dark:hover:bg-white/10"
+                    >
+                      Explore Components
+                    </Link>
+                  </div>
                 </div>
-                <Link
-                  target="_blank"
-                  href="https://libran.jhub.space"
-                  className="inline-flex w-fit items-center rounded-xl bg-black px-5 py-2.5 text-sm text-white transition hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/85"
-                >
-                  Open Template
-                </Link>
+
+                <div className="relative">
+                  <div className="group relative mx-auto h-74 w-full max-w-120">
+                    <div className="absolute inset-0 rounded-2xl border border-black/10 bg-white/45 dark:border-white/15 dark:bg-white/5" />
+                    <Image
+                      className="absolute top-3 left-3 w-[60%] rounded-xl border border-black/10 shadow-[0_20px_45px_-28px_rgba(15,23,42,0.8)] transition-transform duration-500 ease-out group-hover:-translate-x-2 group-hover:-translate-y-1 group-hover:-rotate-3 dark:border-white/15"
+                      src="/resource/template/t1.png"
+                      width={420}
+                      height={220}
+                      alt="libran preview one"
+                    />
+                    <Image
+                      className="absolute right-3 bottom-3 w-[70%] rounded-xl border border-black/10 shadow-[0_24px_50px_-30px_rgba(15,23,42,0.9)] transition-transform duration-500 ease-out group-hover:translate-x-2 group-hover:translate-y-1 group-hover:rotate-2 dark:border-white/15"
+                      src="/resource/template/t2.jpg"
+                      width={420}
+                      height={220}
+                      alt="libran preview two"
+                    />
+                  </div>
+                </div>
               </div>
             </section>
           </FadeIn>
