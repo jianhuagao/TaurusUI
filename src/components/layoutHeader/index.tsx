@@ -5,6 +5,7 @@ import LogoBlock from '../logoBlock';
 import Image from 'next/image';
 import Link from 'next/link';
 import MobileHeaderMenu from './mobileHeaderMenu';
+import { headerNavItems } from './navConfig';
 
 export default memo(function Header() {
   return (
@@ -12,26 +13,27 @@ export default memo(function Header() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center rounded-2xl border border-black/10 bg-white/80 px-3 shadow-[0_8px_24px_-20px_rgba(15,23,42,0.55)] backdrop-blur-none sm:px-5 sm:backdrop-blur-xl dark:border-white/15 dark:bg-black/38 dark:shadow-[0_8px_26px_-18px_rgba(0,0,0,0.65)]">
         <LogoBlock />
         <nav className="ml-4 hidden items-center gap-1 rounded-xl bg-black/3 p-1 md:flex dark:bg-white/5">
-          <Link
-            href="/docs/comp/general/button"
-            className="rounded-lg px-3 py-1.5 text-sm text-black/65 transition hover:bg-black/5 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
-          >
-            Components
-          </Link>
-          <Link
-            href="/docs/article/directory"
-            className="rounded-lg px-3 py-1.5 text-sm text-black/65 transition hover:bg-black/5 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
-          >
-            Article
-          </Link>
-          <a
-            href="https://libran.jhub.space"
-            target="_blank"
-            className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-black/65 transition hover:bg-black/5 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
-          >
-            <Image src="/icons/libran.svg" width={12} height={12} alt="" />
-            Template
-          </a>
+          {headerNavItems.map(item =>
+            item.external ? (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-black/65 transition hover:bg-black/5 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                {item.iconSrc && <Image src={item.iconSrc} width={10} height={10} alt="" />}
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="rounded-lg px-3 py-1.5 text-sm text-black/65 transition hover:bg-black/5 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <DarkSwitch />
