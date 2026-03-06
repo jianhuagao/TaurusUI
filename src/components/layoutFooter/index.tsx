@@ -1,81 +1,101 @@
 import { memo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default memo(function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="relative z-50 border-t border-[#eaeaea] text-sm text-black/70 transition-all dark:border-[#333333] dark:text-white/70">
-      <div className="mx-auto mb-0 flex flex-col items-start gap-1 px-10 pt-12 pb-20 md:flex-row md:px-20 xl:px-72">
-        <div>
-          <div className="flex items-end gap-3">
-            <Image src="/logo.svg" className="ml-1 opacity-70" width={28} height={28} alt="" />
-            <span className="text-xl font-semibold">TaurusUI</span>
-            <p className="text-xs/6 font-medium text-zinc-500 dark:text-zinc-400">
-              v1.0.0 @{process.env.NEXT_PUBLIC_BUILD_VERSION}
+    <footer className="relative mt-16 border-t border-black/10 px-3 pb-6 sm:px-6 dark:border-white/10">
+      <div className="mx-auto mt-8 w-full max-w-7xl overflow-hidden rounded-3xl border border-black/10 bg-white/75 backdrop-blur-xl dark:border-white/15 dark:bg-black/35">
+        <div className="grid gap-8 border-b border-black/10 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_1fr] dark:border-white/10">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-3 py-1 text-[11px] tracking-[0.16em] text-black/60 uppercase dark:border-white/20 dark:bg-white/5 dark:text-white/60">
+              TaurusUI Library
+            </div>
+            <h2 className="max-w-xl text-2xl leading-tight font-semibold text-black/90 sm:text-3xl dark:text-white/90">
+              Find a component, copy the code, and ship your interface faster.
+            </h2>
+            <p className="max-w-xl text-sm text-black/65 dark:text-white/65">
+              No package publish flow, no installation steps. TaurusUI is designed as a practical component gallery for direct reuse.
             </p>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                href="/docs"
+                className="rounded-lg bg-black px-3.5 py-2 text-sm text-white transition hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/85"
+              >
+                Browse Docs
+              </Link>
+              <a
+                href="https://play.jhub.space"
+                target="_blank"
+                className="rounded-lg border border-black/15 bg-white/70 px-3.5 py-2 text-sm text-black/75 transition hover:border-black/25 hover:bg-white dark:border-white/20 dark:bg-white/5 dark:text-white/75 dark:hover:border-white/30 dark:hover:bg-white/10"
+              >
+                Open Playground
+              </a>
+            </div>
           </div>
-          <div className="mt-5 flex flex-wrap items-center">
-            © 2024 TaurusUI
-            <a
-              className="text-primary ml-1 hover:underline"
-              href="https://github.com/jianhuagao/TaurusUI?tab=MIT-1-ov-file#readme"
-            >
-              MIT License
-            </a>
-            <span className="mx-1">/ Created by</span>
-            <a href="https://github.com/jianhuagao" target="_blank" className="transition-all hover:underline">
-              Jianhuagao
-            </a>
-          </div>
-        </div>
-        <div className="mt-5 grid grid-cols-2 gap-16 md:mt-0 md:ml-auto">
-          <div>
-            <p className="mb-3 text-black/80 dark:text-white/80">SITE</p>
-            <ul className="leading-5 opacity-60">
-              <li>
-                <a href="https://github.com/jianhuagao/Libran" target="_blank" className="hover:underline">
-                  Libran
+          <div className="grid grid-cols-2 gap-6 text-sm sm:grid-cols-3">
+            <div>
+              <p className="mb-3 text-xs tracking-[0.16em] text-black/50 uppercase dark:text-white/50">Product</p>
+              <div className="space-y-2 text-black/70 dark:text-white/70">
+                <Link href="/docs" className="block hover:underline">
+                  Docs
+                </Link>
+                <Link href="/docs/comp" className="block hover:underline">
+                  Components
+                </Link>
+                <a href="https://libran.jhub.space" target="_blank" className="block hover:underline">
+                  Template
                 </a>
-              </li>
-              <li>
-                <a href="https://vercel.com" target="_blank" className="hover:underline">
-                  Vercel
+              </div>
+            </div>
+            <div>
+              <p className="mb-3 text-xs tracking-[0.16em] text-black/50 uppercase dark:text-white/50">Resources</p>
+              <div className="space-y-2 text-black/70 dark:text-white/70">
+                <a href="https://nextjs.org" target="_blank" className="block hover:underline">
+                  Next.js
                 </a>
-              </li>
-              <li>
-                <a href="https://nextjs.org" target="_blank" className="hover:underline">
-                  Nextjs
+                <a href="https://tailwindcss.com" target="_blank" className="block hover:underline">
+                  TailwindCSS
                 </a>
-              </li>
-              <li>
-                <a href="https://tailwindcss.com" target="_blank" className="hover:underline">
-                  Tailwindcss
-                </a>
-              </li>
-              <li>
-                <a href="https://motion.dev" target="_blank" className="hover:underline">
+                <a href="https://motion.dev" target="_blank" className="block hover:underline">
                   Motion
                 </a>
-              </li>
-            </ul>
+              </div>
+            </div>
+            <div className="col-span-2 sm:col-span-1">
+              <p className="mb-3 text-xs tracking-[0.16em] text-black/50 uppercase dark:text-white/50">Community</p>
+              <div className="space-y-2 text-black/70 dark:text-white/70">
+                <a href="https://github.com/jianhuagao/TaurusUI" target="_blank" className="block hover:underline">
+                  GitHub Repo
+                </a>
+                <a href="https://github.com/jianhuagao" target="_blank" className="block hover:underline">
+                  Author
+                </a>
+                <a href="mailto:jianhua.gao@foxmail.com" className="block hover:underline">
+                  Contact
+                </a>
+              </div>
+            </div>
           </div>
-          <div>
-            <p className="mb-3 text-black/80 dark:text-white/80">SOCIAL</p>
-            <ul className="leading-5 opacity-60">
-              <li>
-                <a href="https://github.com/jianhuagao" target="_blank" className="hover:underline">
-                  Github
-                </a>
-              </li>
-              <li>
-                <a href="mailto:jianhua.gao@foxmail.com" className="flex items-center gap-1 hover:underline" aria-label="email">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
-                    <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
-                    <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
-                  </svg>
-                  Email
-                </a>
-              </li>
-            </ul>
+        </div>
+        <div className="flex flex-col gap-3 px-6 py-4 text-xs text-black/55 sm:flex-row sm:items-center sm:justify-between sm:px-8 dark:text-white/55">
+          <div className="flex items-center gap-2">
+            <Image src="/logo.svg" className="opacity-70" width={16} height={16} alt="" />
+            <span>TaurusUI</span>
+            <span>v1.0.0 @{process.env.NEXT_PUBLIC_BUILD_VERSION}</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span>© {year} TaurusUI</span>
+            <span>/</span>
+            <a href="https://github.com/jianhuagao/TaurusUI?tab=MIT-1-ov-file#readme" target="_blank" className="hover:underline">
+              MIT License
+            </a>
+            <span>/</span>
+            <a href="https://github.com/jianhuagao" target="_blank" className="hover:underline">
+              Jianhuagao
+            </a>
           </div>
         </div>
       </div>
