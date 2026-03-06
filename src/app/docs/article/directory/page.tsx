@@ -2,47 +2,87 @@ import { memo } from 'react';
 import Link from 'next/link';
 import { getArticlesDic } from '@/service/dataService';
 import AnimatedShow from '@/components/framerMotions/animatedShow';
+import { geist, geistMomo } from '@/app/fonts';
+
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+  if (Number.isNaN(date.getTime())) return dateStr;
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit'
+  }).format(date);
+}
 
 export default memo(async function Page() {
   const sortedArr = await getArticlesDic();
+
+  const totalCount = sortedArr?.length || 0;
+  const latestDate = sortedArr?.[0]?.pubDate ? formatDate(sortedArr[0].pubDate) : '-';
+
   return (
-    <div className="mx-auto max-w-5xl">
-      <h2 className="px-6 pt-4 pb-6">Directory</h2>
-      <AnimatedShow className="flex flex-col gap-6 py-2">
+    <div className="mx-auto max-w-5xl px-4 pb-10 sm:px-6">
+      <section className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/75 px-6 py-8 shadow-[0_30px_70px_-45px_rgba(15,23,42,0.7)] backdrop-blur-xl sm:px-8 dark:border-white/15 dark:bg-black/30">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.04)_1px,transparent_1px)] bg-[size:26px_26px] dark:bg-[linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)]" />
+        <div className="relative z-10">
+          <p className="text-xs tracking-[0.2em] text-black/50 uppercase dark:text-white/50">Blog Directory</p>
+          <h1 className={`${geist.className} mt-3 text-3xl font-semibold sm:text-4xl`}>Articles & Notes</h1>
+          <p className={`${geistMomo.className} mt-3 max-w-2xl text-sm text-black/65 sm:text-base dark:text-white/65`}>
+            Browse all published articles about TaurusUI patterns, implementation notes, and practical UI engineering workflows.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-2 text-xs">
+            <span className="rounded-full bg-black/6 px-3 py-1.5 text-black/70 dark:bg-white/10 dark:text-white/70">
+              {totalCount} published posts
+            </span>
+            <span className="rounded-full bg-black/6 px-3 py-1.5 text-black/70 dark:bg-white/10 dark:text-white/70">
+              Latest: {latestDate}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <AnimatedShow className="mt-8 flex flex-col gap-5">
         {sortedArr?.map(article => {
           const categoryArr = article.category.split(',');
 
           return (
             <div
               key={article.articleId}
-              className="flex flex-col gap-1.5 rounded-xl border border-black/5 px-6 py-5 hover:ring-3 dark:border-white/5 dark:bg-black/20"
+              className="group rounded-2xl border border-black/10 bg-white/70 px-5 py-5 shadow-[0_12px_30px_-28px_rgba(15,23,42,0.9)] transition hover:border-black/20 hover:bg-white/85 dark:border-white/15 dark:bg-black/25 dark:hover:border-white/30 dark:hover:bg-black/35"
             >
-              <div className="flex shrink-0 items-center gap-2 text-sm opacity-85">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
-                  <path d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
-                  <path
-                    fillRule="evenodd"
-                    d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                {article.pubDate}
-              </div>
-              <Link
-                href={`/docs/article/${article.articleId}`}
-                className="cursor-pointer truncate text-lg font-semibold no-underline transition-transform hover:underline active:opacity-65"
-              >
-                {article.artTitle}
-              </Link>
-              <div className="flex shrink-0 items-center gap-1">
-                {categoryArr.map(cat => (
-                  <div
-                    key={cat}
-                    className="rounded-sm border border-gray-100 bg-black/5 px-2 py-0.5 text-xs transition-all dark:border-white/10"
-                  >
-                    # {cat}
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 space-y-3">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-black/55 dark:text-white/55">
+                    <span>#{String(article.articleId).padStart(2, '0')}</span>
+                    <span>{formatDate(article.pubDate)}</span>
+                    <span>Updated {formatDate(article.lastModDate)}</span>
                   </div>
-                ))}
+                  <Link
+                    href={`/docs/article/${article.articleId}`}
+                    className={`${geist.className} block text-balance text-xl leading-snug font-semibold no-underline transition group-hover:opacity-85`}
+                  >
+                    {article.artTitle}
+                  </Link>
+                  <div className="flex flex-wrap gap-2">
+                    {categoryArr.map(cat => (
+                      <span
+                        key={cat}
+                        className="rounded-full border border-black/10 bg-white/80 px-2.5 py-1 text-[11px] text-black/70 dark:border-white/15 dark:bg-white/8 dark:text-white/70"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <Link
+                  href={`/docs/article/${article.articleId}`}
+                  className="inline-flex w-fit items-center gap-1 rounded-lg border border-black/10 bg-white/80 px-2.5 py-1.5 text-sm text-black/70 transition hover:border-black/20 hover:bg-white dark:border-white/15 dark:bg-white/8 dark:text-white/70 dark:hover:border-white/30 dark:hover:bg-white/14"
+                >
+                  Read
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
               </div>
             </div>
           );

@@ -22,7 +22,7 @@ export default function MobileHeaderMenu() {
       </button>
       {open && (
         <div className="absolute top-full right-0 mt-2 w-64">
-          <div className="rounded-2xl border border-black/10 bg-white/90 p-2 shadow-[0_20px_40px_-30px_rgba(15,23,42,0.8)] backdrop-blur-xl dark:border-white/15 dark:bg-black/60">
+          <div className="rounded-2xl border border-black/10 bg-white/92 p-2 shadow-[0_14px_30px_-22px_rgba(15,23,42,0.75)] backdrop-blur-xl dark:border-white/15 dark:bg-black/62">
             <Link
               href="/docs/comp/general/button"
               onClick={() => setOpen(false)}
