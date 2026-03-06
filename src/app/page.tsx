@@ -226,7 +226,7 @@ export default async function Home() {
             <div className="space-y-12">
               {showcaseItems.map(item => (
                 <FadeIn key={item.id} once={true} offscreenY={30}>
-                  <div className="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-[0_16px_40px_-35px_rgba(15,23,42,0.85)] backdrop-blur-md sm:p-7 dark:border-white/15 dark:bg-white/4">
+                  <div className="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-[0_16px_40px_-35px_rgba(15,23,42,0.85)] sm:p-7 sm:pt-5 dark:border-white/15 dark:bg-white/4">
                     <ComponentPrev componentData={item} baseUrl="/homeDemo" />
                   </div>
                 </FadeIn>
