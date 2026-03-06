@@ -55,7 +55,7 @@ const LeftContent = memo(function LeftContent({ isFloat = false }: { isFloat?: b
       <Menu />
       <div className="shrink-0 p-2">
         <div className={clsx('flex items-center p-2', hoverClass)}>
-          <p className={clsx(miniText)}>v1.0.0 @{process.env.NEXT_PUBLIC_BUILD_VERSION}</p>
+          <p className={clsx(miniText)}>v2.2.0 @{process.env.NEXT_PUBLIC_BUILD_VERSION}</p>
           <div className={clsx(!isFloat && 'ml-auto flex items-center gap-2')}>
             {!isFloat && <GithubIcon size={20} />}
             <DarkSwitch />

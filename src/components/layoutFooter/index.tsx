@@ -17,7 +17,8 @@ export default memo(function Footer() {
               Find a component, copy the code, and ship your interface faster.
             </h2>
             <p className="max-w-xl text-sm text-black/65 dark:text-white/65">
-              No package publish flow, no installation steps. TaurusUI is designed as a practical component gallery for direct reuse.
+              No package publish flow, no installation steps. TaurusUI is designed as a practical component gallery for direct
+              reuse.
             </p>
             <div className="flex flex-wrap gap-2">
               <Link
@@ -84,12 +85,16 @@ export default memo(function Footer() {
           <div className="flex items-center gap-2">
             <Image src="/logo.svg" className="opacity-70" width={16} height={16} alt="" />
             <span>TaurusUI</span>
-            <span>v1.0.0 @{process.env.NEXT_PUBLIC_BUILD_VERSION}</span>
+            <span>v2.2.0 @{process.env.NEXT_PUBLIC_BUILD_VERSION}</span>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <span>© {year} TaurusUI</span>
             <span>/</span>
-            <a href="https://github.com/jianhuagao/TaurusUI?tab=MIT-1-ov-file#readme" target="_blank" className="hover:underline">
+            <a
+              href="https://github.com/jianhuagao/TaurusUI?tab=MIT-1-ov-file#readme"
+              target="_blank"
+              className="hover:underline"
+            >
               MIT License
             </a>
             <span>/</span>
