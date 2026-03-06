@@ -19,10 +19,22 @@ export default memo(async function Page() {
 
   const totalCount = sortedArr?.length || 0;
   const latestDate = sortedArr?.[0]?.pubDate ? formatDate(sortedArr[0].pubDate) : '-';
+  const topCategories = Object.entries(
+    (sortedArr || []).reduce<Record<string, number>>((acc, item) => {
+      item.category.split(',').forEach(cat => {
+        const name = cat.trim();
+        if (!name) return;
+        acc[name] = (acc[name] || 0) + 1;
+      });
+      return acc;
+    }, {})
+  )
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
 
   return (
     <div className="mx-auto max-w-5xl px-4 pb-10 sm:px-6">
-      <section className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/75 px-6 py-8 shadow-[0_30px_70px_-45px_rgba(15,23,42,0.7)] backdrop-blur-xl sm:px-8 dark:border-white/15 dark:bg-black/30">
+      <section className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/75 px-6 py-8 shadow-[0_16px_36px_-28px_rgba(15,23,42,0.5)] backdrop-blur-xl sm:px-8 dark:border-white/15 dark:bg-black/30">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.04)_1px,transparent_1px)] bg-[size:26px_26px] dark:bg-[linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)]" />
         <div className="relative z-10">
           <p className="text-xs tracking-[0.2em] text-black/50 uppercase dark:text-white/50">Blog Directory</p>
@@ -41,7 +53,23 @@ export default memo(async function Page() {
         </div>
       </section>
 
-      <AnimatedShow className="mt-8 flex flex-col gap-5">
+      <section className="mt-4 rounded-2xl border border-black/10 bg-white/65 px-5 py-4 dark:border-white/15 dark:bg-black/25">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-xs tracking-[0.16em] text-black/55 uppercase dark:text-white/55">Popular Categories</p>
+          <div className="flex flex-wrap gap-2">
+            {topCategories.map(([name, count]) => (
+              <span
+                key={name}
+                className="rounded-full border border-black/10 bg-white/80 px-2.5 py-1 text-[11px] text-black/70 dark:border-white/15 dark:bg-white/8 dark:text-white/70"
+              >
+                {name} · {count}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <AnimatedShow className="mt-6 flex flex-col gap-5">
         {sortedArr?.map(article => {
           const categoryArr = article.category.split(',');
 
