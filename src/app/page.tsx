@@ -1,25 +1,13 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import clsx from 'clsx';
 
-import ChangeBg from '@/components/changeBg';
 import ComponentPrev from '@/components/componentPrev';
-import DarkSwitchBlock from '@/components/darkSwitchBlock';
 import FadeIn from '@/components/framerMotions/fadeIn';
+import AnimatedShow from '@/components/framerMotions/animatedShow';
 import LayoutContent from '@/components/layoutContent';
 import { MenuItemProps } from '@/components/menu';
 import { getComponents } from '@/service/dataService';
-import EmojiHoverCard from '@/components/emojiHoverCard';
-import HomepageBg from '@/components/homepageBg';
-import AnimatedShow from '@/components/framerMotions/animatedShow';
 
-import { geistMomo } from './fonts';
-
-// import { Geist_Mono } from 'next/font/google';
-
-// const geist = Geist_Mono({
-//   subsets: ['latin']
-// });
+import { geist, geistMomo } from './fonts';
 
 const findFirstSlug = (menuItems: MenuItemProps[]) => {
   for (const item of menuItems) {
@@ -31,205 +19,174 @@ const findFirstSlug = (menuItems: MenuItemProps[]) => {
   return null;
 };
 
+const featureItems = [
+  {
+    title: 'Production Ready',
+    description: 'Built for real projects with accessibility-minded patterns, practical APIs, and stable defaults.'
+  },
+  {
+    title: 'Composable System',
+    description: 'Combine primitives quickly to ship polished pages without over-designing every small interaction.'
+  },
+  {
+    title: 'Performance Focused',
+    description: 'Lean styling and animation choices keep loading smooth across desktop and mobile environments.'
+  }
+];
+
+const showcaseItems = [
+  {
+    id: '1',
+    title: 'Notification Demo',
+    defaultCfg: '11-12',
+    slug: 'demo',
+    category: 'demo',
+    wrapper: 'h-72',
+    creator: '',
+    interactive: true,
+    componentsName: ''
+  },
+  {
+    id: '2',
+    title: 'Switch Demo',
+    slug: 'demo',
+    defaultCfg: '10-13',
+    category: 'demo',
+    wrapper: 'h-52',
+    creator: '',
+    interactive: true,
+    componentsName: ''
+  },
+  {
+    id: '3',
+    title: 'RadioGroup Demo',
+    slug: 'demo',
+    category: 'demo',
+    defaultCfg: '16-14',
+    wrapper: 'h-80',
+    creator: '',
+    innerWrapper: 'px-[20%] *:flex-1 flex-row!',
+    interactive: true,
+    componentsName: ''
+  }
+];
+
 export default async function Home() {
   const componentsByCategory = await getComponents();
   const redirect = findFirstSlug(componentsByCategory);
   const docUrl = redirect ? `/docs/comp/${redirect}` : '/docs';
 
   return (
-    <main className="relative">
-      <HomepageBg />
+    <main className="relative isolate overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_20%_5%,rgba(59,130,246,0.16),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(15,23,42,0.14),transparent_36%)] dark:bg-[radial-gradient(circle_at_20%_5%,rgba(56,189,248,0.15),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(148,163,184,0.14),transparent_36%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,transparent,rgba(15,23,42,0.02))] dark:bg-[linear-gradient(to_bottom,transparent,rgba(148,163,184,0.05))]" />
       <LayoutContent>
-        <div className="mx-auto mt-9 flex max-w-7xl flex-col p-5 sm:p-20">
-          <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="flex flex-col gap-12">
-            <h1 className="group z-10 bg-linear-to-b bg-clip-text text-center text-4xl font-bold transition-all lg:text-6xl dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
-              <ChangeBg className="cursor-pointer leading-14 select-none lg:leading-20">
-                <span className="group-hover:ml-0">Component </span>
-                library built with TailwindCSS
-              </ChangeBg>
-            </h1>
-            <h1 className={clsx('text-center text-xl', geistMomo.className)}>
-              Free open source <span className="cursor-pointer text-[#38bdf8] transition-all hover:text-3xl">TailwindCSS</span>{' '}
-              component library
-            </h1>
-            <div className="mt-16 mb-24 flex items-center justify-center gap-5">
-              <Link
-                href="https://github.com/jianhuagao/TaurusUI"
-                target="_blank"
-                className="group relative inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-white/60 px-4 py-2 text-sm ring-1 ring-gray-300/50 backdrop-blur-md transition-all duration-300 hover:shadow-lg active:scale-90 dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20 dark:hover:ring-white/50"
-              >
-                Github
-                <Image className="dark:invert" src="/icons/github.svg" width={16} height={16} alt="" />
-              </Link>
-              <Link
-                href={docUrl}
-                className="group relative inline-flex cursor-pointer items-center justify-center rounded-xl bg-white/60 px-4 py-2 text-sm text-purple-800 no-underline ring-1 ring-gray-300/50 backdrop-blur-md transition-all duration-300 hover:shadow-lg active:scale-90 dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20 dark:hover:ring-white/50"
-              >
-                Get started
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-4 w-0 transition-all group-hover:w-4"
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-5 py-10 sm:px-10 sm:py-16 lg:px-16">
+          <section className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/80 p-8 shadow-[0_20px_80px_-40px_rgba(2,6,23,0.45)] backdrop-blur-xl sm:p-12 dark:border-white/15 dark:bg-black/35">
+            <div className="pointer-events-none absolute -top-32 -right-20 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl dark:bg-cyan-300/15" />
+            <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-sky-400/20 blur-3xl dark:bg-sky-300/15" />
+            <AnimatedShow inViewShow childDuration={0.55} scale={0.97} className="relative z-10 flex flex-col gap-8">
+              <span className="inline-flex w-fit items-center rounded-full border border-black/10 bg-white/85 px-4 py-1.5 text-xs tracking-[0.18em] text-black/70 uppercase dark:border-white/20 dark:bg-white/5 dark:text-white/70">
+                TAURUS UI SYSTEM
+              </span>
+              <div className="max-w-4xl space-y-6">
+                <h1 className={`${geist.className} text-4xl leading-tight font-semibold text-balance sm:text-5xl lg:text-6xl`}>
+                  Build polished interfaces with a modern Tailwind component platform.
+                </h1>
+                <p
+                  className={`${geistMomo.className} max-w-2xl text-sm leading-relaxed text-black/70 sm:text-base dark:text-white/70`}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-                <span className="pointer-events-none absolute right-2 bottom-2 z-0 size-5 rounded-full bg-purple-400/50 blur-[6px] transition-transform duration-300 ease-in-out group-hover:translate-1/2 dark:bg-purple-400/40"></span>
-              </Link>
-            </div>
-          </AnimatedShow>
-          <div className="flex flex-col gap-8">
-            <AnimatedShow inViewShow childDuration={0.6} scale={0.95} className="mt-16 mb-6 grid gap-6 md:grid-cols-3">
-              <DarkSwitchBlock />
-              <EmojiHoverCard
-                emojis={['🧪', '🧬', '🔬', '⚗️', '🧫']}
-                href="https://play.jhub.space"
-                title="Playground"
-                description="在线试验你的组件组合"
-              />
-              <EmojiHoverCard
-                emojis={['📦', '📣', '📤', '🌆', '🗯️', '📊', '💰']}
-                href={docUrl}
-                title="More Components"
-                description="探索更多开箱即用组件"
-              />
-            </AnimatedShow>
-            <FadeIn once={true}>
-              <ComponentPrev
-                componentData={{
-                  id: '1',
-                  title: 'Notification Demo',
-                  defaultCfg: '11-12',
-                  slug: 'demo',
-                  category: 'demo',
-                  wrapper: 'h-72',
-                  creator: '',
-                  interactive: true,
-                  componentsName: ''
-                }}
-                baseUrl={`/homeDemo`}
-              />
-            </FadeIn>
-            <FadeIn once={true}>
-              <ComponentPrev
-                componentData={{
-                  id: '2',
-                  title: 'Switch Demo',
-                  slug: 'demo',
-                  defaultCfg: '10-13',
-                  category: 'demo',
-                  wrapper: 'h-52',
-                  creator: '',
-                  interactive: true,
-                  componentsName: ''
-                }}
-                baseUrl={`/homeDemo`}
-              />
-            </FadeIn>
-            <FadeIn once={true}>
-              <ComponentPrev
-                componentData={{
-                  id: '3',
-                  title: 'RadioGroup Demo',
-                  slug: 'demo',
-                  category: 'demo',
-                  defaultCfg: '16-14',
-                  wrapper: 'h-80',
-                  creator: '',
-                  innerWrapper: 'px-[20%] *:flex-1 flex-row!',
-                  interactive: true,
-                  componentsName: ''
-                }}
-                baseUrl={`/homeDemo`}
-              />
-            </FadeIn>
-            <FadeIn once={true}>
-              <div className="mt-10 flex items-center justify-center opacity-70">
-                <Link href={docUrl} className="text-lg hover:text-blue-500 hover:underline">
-                  More Components ...
+                  TaurusUI gives teams a focused library of composable blocks, refined interaction patterns, and practical
+                  examples that feel production-ready from the first commit.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href={docUrl}
+                  className="inline-flex items-center justify-center rounded-xl bg-black px-5 py-2.5 text-sm font-medium text-white transition hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/85"
+                >
+                  Get Started
+                </Link>
+                <Link
+                  href="https://github.com/jianhuagao/TaurusUI"
+                  target="_blank"
+                  className="inline-flex items-center justify-center rounded-xl border border-black/15 bg-white/70 px-5 py-2.5 text-sm font-medium text-black/80 transition hover:border-black/25 hover:bg-white dark:border-white/20 dark:bg-white/5 dark:text-white/80 dark:hover:border-white/35 dark:hover:bg-white/10"
+                >
+                  GitHub
                 </Link>
               </div>
-            </FadeIn>
-            <FadeIn once={true}>
-              <div className="my-40 border-l border-dashed border-gray-400/40 dark:border-gray-500/60">
-                <div className="flex items-baseline gap-4 border-b border-dashed border-gray-400/40 px-16 py-14 dark:border-gray-500/60">
-                  <p className="bg-linear-to-b bg-clip-text text-3xl font-bold dark:from-white/80 dark:via-white dark:to-white/60 dark:text-transparent">
-                    Templates using this UI
-                  </p>
-                  <p className="text-xl text-gray-500 dark:text-gray-400">Libran</p>
+              <div className="grid gap-3 text-xs text-black/65 sm:grid-cols-3 dark:text-white/65">
+                <div className="rounded-xl border border-black/10 bg-white/70 px-4 py-3 dark:border-white/15 dark:bg-white/5">
+                  80+ polished patterns
                 </div>
-                <div className="flex flex-col gap-10 px-16 py-14 md:flex-row">
-                  <div className="flex flex-1 flex-col gap-4">
-                    <div className="flex flex-wrap items-center gap-4">
-                      <span className="relative inline-block shrink-0 rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-purple-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
-                        <span className="relative z-10">TaurusUI</span>
-                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-purple-400/50 blur-[5px] dark:bg-purple-400/40"></span>
-                      </span>
-
-                      <span className="relative inline-block shrink-0 rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-emerald-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
-                        <span className="relative z-10">NextJS</span>
-                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-emerald-400/50 blur-[5px] dark:bg-emerald-400/40"></span>
-                      </span>
-
-                      <span className="relative inline-block shrink-0 rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-red-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
-                        <span className="relative z-10">TailwindCSS</span>
-                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-red-400/50 blur-[5px] dark:bg-red-400/40"></span>
-                      </span>
-
-                      <span className="relative inline-block shrink-0 rounded-full bg-white/70 px-3.5 py-1.5 text-xs text-cyan-800 shadow ring-1 shadow-black/10 ring-white/30 backdrop-blur-md dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20">
-                        <span className="relative z-10">Motion</span>
-                        <span className="pointer-events-none absolute right-1.5 bottom-1.5 z-0 size-4 rounded-full bg-cyan-400/50 blur-[5px] dark:bg-cyan-400/40"></span>
-                      </span>
-                    </div>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      This official website template is built with TaurusUI, Next.js, Tailwind CSS, and Motion, combining modern
-                      UI components with powerful frameworks to create a stunning and responsive web experience. Leverage these
-                      technologies to build your own professional website with ease and efficiency.
-                    </p>
-
-                    <Link
-                      target="_blank"
-                      href="https://libran.jhub.space"
-                      className="group relative inline-flex w-32 cursor-pointer items-center justify-center rounded-xl bg-white/60 px-4 py-2 text-sm text-purple-800 no-underline ring-1 ring-gray-300/50 backdrop-blur-md transition-all duration-300 hover:shadow-lg active:scale-90 dark:bg-[rgba(255,255,255,0.15)] dark:text-white dark:shadow-white/10 dark:ring-white/20 dark:hover:ring-white/50"
-                    >
-                      Go to Libran
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="size-4 w-0 transition-all group-hover:w-4"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                      </svg>
-                      <span className="pointer-events-none absolute right-2 bottom-2 z-0 size-5 rounded-full bg-purple-400/50 blur-[6px] transition-transform duration-300 ease-in-out group-hover:translate-1/2 dark:bg-purple-400/40"></span>
-                    </Link>
-                  </div>
-                  <div className="flex-1">
-                    <div className="group relative">
-                      <Image
-                        className="absolute top-0 left-0 rounded-lg shadow-2xl"
-                        src="/resource/template/t2.jpg"
-                        width={400}
-                        height={200}
-                        alt="libran"
-                      />
-                      <Image
-                        className="absolute top-0 left-1/5 rounded-lg shadow-2xl transition-transform duration-500 ease-in-out group-hover:translate-y-[40px]"
-                        src="/resource/template/t1.png"
-                        width={400}
-                        height={200}
-                        alt="libran"
-                      />
-                    </div>
-                  </div>
+                <div className="rounded-xl border border-black/10 bg-white/70 px-4 py-3 dark:border-white/15 dark:bg-white/5">
+                  Built on Next.js + TailwindCSS
+                </div>
+                <div className="rounded-xl border border-black/10 bg-white/70 px-4 py-3 dark:border-white/15 dark:bg-white/5">
+                  Responsive by default
                 </div>
               </div>
-            </FadeIn>
-          </div>
+            </AnimatedShow>
+          </section>
+
+          <section className="grid gap-4 md:grid-cols-3">
+            {featureItems.map(item => (
+              <FadeIn once={true} key={item.title} offscreenY={40} className="h-full">
+                <article className="h-full rounded-2xl border border-black/10 bg-white/65 p-6 shadow-[0_16px_50px_-35px_rgba(15,23,42,0.6)] backdrop-blur-md dark:border-white/15 dark:bg-white/5">
+                  <h2 className={`${geist.className} text-lg font-medium`}>{item.title}</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-black/65 dark:text-white/65">{item.description}</p>
+                </article>
+              </FadeIn>
+            ))}
+          </section>
+
+          <section className="space-y-8">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="text-xs tracking-[0.2em] text-black/45 uppercase dark:text-white/50">Showcase</p>
+                <h2 className={`${geist.className} mt-2 text-3xl font-semibold sm:text-4xl`}>Interactive component previews</h2>
+              </div>
+              <Link
+                href={docUrl}
+                className="rounded-xl border border-black/15 px-4 py-2 text-sm text-black/80 transition hover:border-black/30 hover:bg-black/5 dark:border-white/20 dark:text-white/80 dark:hover:border-white/35 dark:hover:bg-white/8"
+              >
+                Explore all components
+              </Link>
+            </div>
+            <div className="space-y-12">
+              {showcaseItems.map(item => (
+                <FadeIn key={item.id} once={true} offscreenY={30}>
+                  <div className="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-[0_12px_40px_-35px_rgba(15,23,42,0.8)] backdrop-blur-md sm:p-7 dark:border-white/15 dark:bg-white/4">
+                    <ComponentPrev componentData={item} baseUrl="/homeDemo" />
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </section>
+
+          <FadeIn once={true} offscreenY={35}>
+            <section className="overflow-hidden rounded-3xl border border-black/10 bg-white/80 p-8 sm:p-10 dark:border-white/15 dark:bg-white/5">
+              <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
+                <div className="max-w-2xl space-y-4">
+                  <p className="text-xs tracking-[0.2em] text-black/45 uppercase dark:text-white/50">Template</p>
+                  <h2 className={`${geist.className} text-3xl leading-tight font-semibold sm:text-4xl`}>
+                    Start from the official Taurus website template
+                  </h2>
+                  <p className="text-sm leading-relaxed text-black/65 dark:text-white/65">
+                    The Libran template demonstrates how TaurusUI works with Next.js, TailwindCSS, and Motion to deliver a
+                    clean, high-end product surface quickly.
+                  </p>
+                </div>
+                <Link
+                  target="_blank"
+                  href="https://libran.jhub.space"
+                  className="inline-flex w-fit items-center rounded-xl bg-black px-5 py-2.5 text-sm text-white transition hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/85"
+                >
+                  Open Template
+                </Link>
+              </div>
+            </section>
+          </FadeIn>
         </div>
       </LayoutContent>
     </main>
