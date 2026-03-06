@@ -43,7 +43,7 @@ export default memo(function Header() {
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-2 hidden w-full max-w-7xl items-center justify-between rounded-xl border border-black/8 bg-white/70 px-4 py-2 text-xs text-black/60 backdrop-blur-xl md:flex dark:border-white/10 dark:bg-black/30 dark:text-white/60">
+      {/* <div className="mx-auto mt-2 hidden w-full max-w-7xl items-center justify-between rounded-xl border border-black/8 bg-white/70 px-4 py-2 text-xs text-black/60 backdrop-blur-xl md:flex dark:border-white/10 dark:bg-black/30 dark:text-white/60">
         <div className="flex items-center gap-2">
           <span className="size-1.5 rounded-full bg-emerald-500/90" />
           <span>Copy-ready component snippets for Tailwind projects</span>
@@ -69,7 +69,7 @@ export default memo(function Header() {
             Playground
           </a>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 });
